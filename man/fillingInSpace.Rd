@@ -6,8 +6,9 @@
 \usage{
 fillingInSpace(
   lstInput,
-  covariable1 = dem,
-  covariable2 = aspect,
+  studyarea = "ATA",
+  covariable1,
+  covariable2,
   nc = 4,
   bs = "cr",
   k = 20
@@ -16,9 +17,11 @@ fillingInSpace(
 \arguments{
 \item{lstInput}{MODIS LST scene to be filled in space, using GAM with 3D spatial surface trend.}
 
-\item{covariable1}{Additional variable to improve the prediction of LST values. It should be a raster object and match the extent and origin of "lstInput" variable. Digital elevation model of Antarctica used as default value, because this package developed after analyzing MODIS LST data for Antarctica and found that DEM is very important to predict LST in Antarctica. The user can use DEM for his study area or even use another variable.}
+\item{studyarea}{Name of study area ( 'GADM','countries'), the default study area is Antarctica "ATA".}
 
-\item{covariable2}{Additional variable to improve the prediction of LST values. It should be a raster object and match the extent and origin of "lstInput" variable. Aspect of Antarctica used as default value, because this package developed after analyzing MODIS LST data for Antarctica and found that aspect is very important to predict LST in Antarctica. The user can use aspect for his study area or even use another variable.}
+\item{covariable1}{Digital elevation model as additional variable to improve the prediction of LST values. It should be a raster object and match the extent and origin of "lstInput" variable.}
+
+\item{covariable2}{Any additional variable to improve the prediction of LST values. It should be a raster object and match the extent and origin of "lstInput" variable.}
 
 \item{nc}{Cluster size (Default = 4).}
 
@@ -34,6 +37,9 @@ Fill the gaps in the MODIS LST scene using GAM with 3D spatial trend surface, an
 }
 \examples{
 \dontrun{
+aqua <- raster(system.file("MODIS_data","aqua.tif", package="modislst"))
+dem <- raster(system.file("covariables","dem.tif", package="modislst"))
+aspect <- raster(system.file("covariables","aspect.tif", package="modislst"))
 fillingInSpace(aqua, covariable1=dem, covariable1=aspect)
 }
 

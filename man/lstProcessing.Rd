@@ -16,7 +16,7 @@ lstProcessing(
 
 \item{referenceLST}{The input MODIS LST scene to fill the gaps from it, downloaded from MODIS package.}
 
-\item{studyarea}{Name of study area ( 'GADM','countries'), the default study area is Antarctica.}
+\item{studyarea}{Name of study area ( 'GADM','countries'), the default study area is Antarctica "ATA".}
 
 \item{crs}{Target projected coordinate system, the default is Antarctica polar stereographic projected coordinate system "+init=epsg:3031".}
 }

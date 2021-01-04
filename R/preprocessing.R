@@ -6,7 +6,7 @@
 #'
 #' @param targetLST    The input MODIS LST scene to be filled, downloaded from MODIS package.
 #' @param referenceLST The input MODIS LST scene to fill the gaps from it, downloaded from MODIS package.
-#' @param studyarea    Name of study area ( 'GADM','countries'), the default study area is Antarctica.
+#' @param studyarea    Name of study area ( 'GADM','countries'), the default study area is Antarctica "ATA".
 #' @param crs          Target projected coordinate system, the default is Antarctica polar stereographic projected coordinate system "+init=epsg:3031".
 #'
 #' @return List of cropped and projected MODIS LST scenes, the first element in the list is the target scene and the second one is the reference scene.
@@ -21,7 +21,7 @@
 #'
 #'
 lstProcessing <- function(targetLST, referenceLST, studyarea="ATA", crs="+init=epsg:3031"){
-  studyarea <- getData(country = "ATA", level = 0,path = system.file("/inst/studyarea",package="modislst"))
+  studyarea <- getData(country = studyarea, level = 0,path = "inst/studyarea/")
   studyarea <- spTransform(studyarea,projection(targetLST))
 
 

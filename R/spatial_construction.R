@@ -6,9 +6,10 @@
 #'
 #'
 #' @param lstInput MODIS LST scene to be filled in space, using GAM with 3D spatial surface trend.
-#' @param covariable1 Additional variable to improve the prediction of LST values. It should be a raster object and match the extent and origin of "lstInput" variable. Digital elevation model of Antarctica used as default value, because this package developed after analyzing MODIS LST data for Antarctica and found that DEM is very important to predict LST in Antarctica. The user can use DEM for his study area or even use another variable.
+#' @param studyarea Name of study area ( 'GADM','countries'), the default study area is Antarctica "ATA".
+#' @param covariable1 Digital elevation model as additional variable to improve the prediction of LST values. It should be a raster object and match the extent and origin of "lstInput" variable.
 #'
-#' @param covariable2 Additional variable to improve the prediction of LST values. It should be a raster object and match the extent and origin of "lstInput" variable. Aspect of Antarctica used as default value, because this package developed after analyzing MODIS LST data for Antarctica and found that aspect is very important to predict LST in Antarctica. The user can use aspect for his study area or even use another variable.
+#' @param covariable2 Any additional variable to improve the prediction of LST values. It should be a raster object and match the extent and origin of "lstInput" variable.
 #'
 #' @param nc Cluster size (Default = 4).
 #' @param bs Represent the smooth function and quadratic penalty to control degree of freedom of smoothing (Default value is cubic spline basis "cr").
@@ -17,7 +18,7 @@
 #'
 #' @return Filled MODIS LST scene.
 #' @export
-#' @importFrom raster getData projection stack
+#' @importFrom raster getData projection stack raster
 #' @importFrom sp spTransform
 #' @importFrom sf st_as_sf
 #' @importFrom parallel detectCores makeCluster
@@ -27,14 +28,17 @@
 #'
 #'
 #' @examples
-#' \dontrun{
+#'\dontrun{
+#' aqua <- raster(system.file("MODIS_data","aqua.tif", package="modislst"))
+#' dem <- raster(system.file("covariables","dem.tif", package="modislst"))
+#' aspect <- raster(system.file("covariables","aspect.tif", package="modislst"))
 #' fillingInSpace(aqua, covariable1=dem, covariable1=aspect)
-#' }
+#'}
 #'
 #'
 #'
 
-fillingInSpace <- function(lstInput, covariable1=dem, covariable2=aspect, nc=4, bs="cr", k=20){
+fillingInSpace <- function(lstInput, studyarea = "ATA", covariable1, covariable2, nc=4, bs="cr", k=20){
   ##binding the "cl" variable locally to the function
   cl <- NULL
   ## Check the number of available cores for parallel computing, and prepare the clusters for parallel computing
@@ -56,11 +60,11 @@ fillingInSpace <- function(lstInput, covariable1=dem, covariable2=aspect, nc=4, 
   ## Match all variables in one stack
   names(lstInput) <- c("lst")
   names(covariable1) <- c("ele")
-  names(covariable2) <- c("aspect")
+  names(covariable2) <- c("co2")
   s <- stack(lstInput,covariable1,covariable2)
 
   ## convert the polygon to simple feature geometry (to make the extraction values faster)
-  studyarea <- getData(country = "ATA", level = 0, path = system.file("/inst/studyarea",package="modislst"))
+  studyarea <- getData(country = studyarea, level = 0, path = "inst/studyarea/")
   studyarea <- spTransform(studyarea,projection(lstInput))
   studyarea <- st_as_sf(studyarea)
 
@@ -79,7 +83,7 @@ fillingInSpace <- function(lstInput, covariable1=dem, covariable2=aspect, nc=4, 
 
 
   ## Build GAM with 3D spatial trend
-  model<- bam(lst ~ s(ele,bs=bs,k=k)+aspect+te(x,y,ele,bs=c("tp","tp","cr")),method ="REML",data=dataset,cluster=cl)
+  model<- bam(lst ~ s(ele,bs=bs,k=k)+s(co2,bs=bs,k=k)+te(x,y,ele,bs=c("tp","tp","cr")),method ="REML",data=dataset,cluster=cl)
 
   ## Predict values of missing pixels
   predictions <- predict.bam(model,missing.pixels,cluster=cl)

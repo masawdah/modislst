@@ -10,11 +10,13 @@
 #'
 #' @return MODIS LST scene filling partially.
 #' @export
-#' @importFrom raster focal overlay
+#' @importFrom raster focal overlay raster
 #' @importFrom stats quantile
 #'
 #' @examples
-#' \dontrun{
+#'\dontrun{
+#' aqua <- raster(system.file("MODIS_data","aqua.tif", package="modislst"))
+#' terra <- raster(system.file("MODIS_data","terra.tif", package="modislst"))
 #' fillingLST(inputs=list(aqua,terra), m=47)
 #' }
 #'

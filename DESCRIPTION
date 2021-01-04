@@ -19,3 +19,5 @@ Imports:
     mgcv
 URL: https://github.com/masawdah/modislst
 BugReports: https://github.com/masawdah/modislst/issues
+Depends: 
+    R (>= 2.10)
