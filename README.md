@@ -11,8 +11,15 @@
 Different functions have been implemented to reconstruct Aqua/Terra LST
 data using the nearest scene available in time, reconstruct the scene in
 space using GAM with 3-dimensional spatial surface and additional
-covariables like digital elevation model and aspect, or combine the two
-method together to get better results.
+covariables like Digital Elevation Model and aspect, or combine the two
+methods together to get better results.
+
+This work was the result of Master's thesis in fulfilment of the requirements for the Erasmus Mundus degree of Master of Science in Geospatial Technologies. At the Westfälische Wilhelms-Universität Münster, supervised by:
+- Prof. Dr. Hanna Meyer
+- Prof. Dr. Ignacio Guerrero
+- Dr. Maite Lezama Valdes
+
+
 
 ## Installation
 
