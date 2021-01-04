@@ -17,3 +17,5 @@ Imports:
     sf,
     parallel,
     mgcv
+URL: https://github.com/masawdah/modislst
+BugReports: https://github.com/masawdah/modislst/issues
