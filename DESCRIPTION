@@ -1,6 +1,6 @@
 Package: modislst
 Type: Package
-Title: Fill MODIS LST gaps
+Title: Fill gaps in MODIS LST data
 Version: 0.1.0
 Author: Mohammad Alasawedah <masawdah@gmail.com>
 Maintainer: Mohammad Alasawedah <masawdah@gmail.com>
