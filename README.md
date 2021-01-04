@@ -64,7 +64,7 @@ plot(aqua,main="Aqua Scene Before Filling - Target Scene")
 <img src="man/figures/README-example-1.png" width="100%" />
 
 ``` r
-plot(terra, main="Terra Scene - Refernce Scene")
+plot(terra, main="Terra Scene - Reference Scene")
 ```
 
 <img src="man/figures/README-example-2.png" width="100%" />
