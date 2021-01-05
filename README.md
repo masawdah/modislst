@@ -16,8 +16,8 @@ methods together to get better results.
 
 This work was the result of Master's thesis in fulfilment of the requirements for the Erasmus Mundus degree of Master of Science in Geospatial Technologies. At the Westfälische Wilhelms-Universität Münster, supervised by:
 - Prof. Dr. Hanna Meyer
-- Prof. Dr. Ignacio Guerrero
 - Dr. Maite Lezama Valdes
+- Prof. Dr. Ignacio Guerrero
 
 
 
