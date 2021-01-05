@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # Fill the gaps in MODIS LST data  
 
 <!-- badges: start -->
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/masawdah/modislst?branch=master&svg=true)](https://ci.appveyor.com/project/masawdah/modislst)
 <!-- badges: end -->
 
 `modislst` is an R package for filling the gaps in MODIS LST data. Different functions have been implemented to reconstruct Aqua/Terra LST data using the nearest scene available in time, reconstruct the scene in space using GAM with 3-dimensional spatial surface and additional covariables like digital elevation model and aspect, or combine the two method together to get better results. 
