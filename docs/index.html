@@ -81,11 +81,8 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of modislst from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"modislst"</span><span class="op">)</span></code></pre></div>
 <p>You can install the released version of modislst from GitHub, just run in your R console the following code:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"masawdah/modislst"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
@@ -98,7 +95,7 @@
 <p>Call <code>modislst</code> and prepare the necessary data. This example will show you how to fill Aqua LST scene for Antarctica.</p>
 <p>In this example Aqua/Terra LST overpasses on 31 October 2016 for Antarctica have been downloaded using MODIS package, then reprojected and cropped to use them immediately in the examples.</p>
 <p>Aspect and Digital Elevation Model of Antarctica obtained from National Snow &amp; Ice Center (<a href="https://nsidc.org/data/nsidc-0082/versions/2" class="uri">https://nsidc.org/data/nsidc-0082/versions/2</a>)], used as covariables after matching their extent and origin with Aqua/Terra scenes.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/masawdah/modislst">modislst</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span>
 <span class="co">#&gt; Loading required package: sp</span>
@@ -115,14 +112,14 @@
 <span class="co">## Plot the Aqua/Terra scene before the filling process</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">aqua</span>,main<span class="op">=</span><span class="st">"Aqua Scene Before Filling - Target Scene"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">terra</span>, main<span class="op">=</span><span class="st">"Terra Scene - Reference Scene"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-example-2.png" width="100%"></p>
 </div>
 <div id="fill-the-gaps-in-time" class="section level3">
 <h3 class="hasAnchor">
 <a href="#fill-the-gaps-in-time" class="anchor"></a>Fill the gaps in time</h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Fill the gaps partially in time using moving window of size 47*47.</span>
 <span class="va">filledAqua</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/fillingInTime.html">fillingInTime</a></span><span class="op">(</span>inputs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">aqua</span>,<span class="va">terra</span><span class="op">)</span>, m<span class="op">=</span><span class="fl">47</span><span class="op">)</span>
 
@@ -133,7 +130,7 @@
 <div id="fill-the-gaps-in-space" class="section level3">
 <h3 class="hasAnchor">
 <a href="#fill-the-gaps-in-space" class="anchor"></a>Fill the gaps in space</h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co">## Fill the remaining gaps partially in space using.</span>
 <span class="va">filledAqua</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/fillingInSpace.html">fillingInSpace</a></span><span class="op">(</span>lstInput<span class="op">=</span><span class="va">filledAqua</span>, covariable1<span class="op">=</span><span class="va">dem</span>, covariable2<span class="op">=</span><span class="va">aspect</span><span class="op">)</span>
