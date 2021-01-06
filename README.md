@@ -27,6 +27,13 @@ You can install the released version of modislst from
 install.packages("modislst")
 ```
 
+You can install the released version of modislst from GitHub, just run
+in your R console the following code:
+
+``` r
+remotes::install_github("masawdah/modislst")
+```
+
 ## Example
 
 This is an example which shows you how to fill the gaps of daytime Aqua

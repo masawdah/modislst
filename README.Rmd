@@ -30,6 +30,11 @@ You can install the released version of modislst from [CRAN](https://CRAN.R-proj
 install.packages("modislst")
 ```
 
+You can install the released version of modislst from GitHub, just run in your R console the following code:
+```r
+remotes::install_github("masawdah/modislst")
+```
+
 ## Example
 
 This is an example which shows you how to fill the gaps of daytime Aqua scene (target) on 31 October 2016 using the available Terra scene in the same day, then fill the remaining gaps completely in space.

@@ -23,7 +23,7 @@
 #' @importFrom sf st_as_sf
 #' @importFrom parallel detectCores makeCluster
 #' @importFrom exactextractr exact_extract
-#' @importFrom mgcv bam predict.bam
+#' @importFrom mgcv bam  predict.bam
 #' @importFrom stats complete.cases
 #'
 #'
@@ -41,26 +41,21 @@
 fillingInSpace <- function(lstInput, studyarea = "ATA", covariable1, covariable2, nc=4, bs="cr", k=20){
   ##binding the "cl" variable locally to the function
   cl <- NULL
+
   ## Check the number of available cores for parallel computing, and prepare the clusters for parallel computing
-  funs <- function(nc=4){
-
-    if (detectCores() > nc) { ## no point otherwise
-      message(paste0("Your machine has ",detectCores(), " cores, ","you can use all of them instead of ", nc ," cores to decrease the processing time"))
-      cl <- makeCluster(nc)
-
+  if (detectCores() > nc) {
+    message(paste0("Your machine has ",detectCores(), " cores, ","you can use all of them instead of ", nc ," cores to decrease the processing time"))
+    cl <- makeCluster(nc)
     } else if(detectCores() == nc) {
       cl <- makeCluster(nc)
-    } else {
-      stop(paste0("Your machine has ",detectCores(), " cores, ","please use the same number of cores or less"))
-    }
-
-  }
-
+      } else {
+        stop(paste0("Your machine has ",detectCores(), " cores, ","please use the same number of cores or less"))
+        }
 
   ## Match all variables in one stack
   names(lstInput) <- c("lst")
   names(covariable1) <- c("ele")
-  names(covariable2) <- c("co2")
+  names(covariable2) <- c("cov2")
   s <- stack(lstInput,covariable1,covariable2)
 
   ## convert the polygon to simple feature geometry (to make the extraction values faster)
@@ -83,7 +78,7 @@ fillingInSpace <- function(lstInput, studyarea = "ATA", covariable1, covariable2
 
 
   ## Build GAM with 3D spatial trend
-  model<- bam(lst ~ s(ele,bs=bs,k=k)+s(co2,bs=bs,k=k)+te(x,y,ele,bs=c("tp","tp","cr")),method ="REML",data=dataset,cluster=cl)
+  model<- bam(lst ~ s(ele,bs=bs,k=k)+s(cov2,bs=bs,k=k)+te(x,y,ele,bs=c("tp","tp","cr")),method ="REML",data=dataset,cluster=cl)
 
   ## Predict values of missing pixels
   predictions <- predict.bam(model,missing.pixels,cluster=cl)
