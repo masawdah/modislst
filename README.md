@@ -25,13 +25,6 @@ This work was the result of Master's thesis in fulfilment of the requirements fo
 
 ## Installation
 
-You can install the released version of modislst from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("modislst")
-```
-
 You can install the released version of modislst from GitHub, just run
 in your R console the following code:
 
