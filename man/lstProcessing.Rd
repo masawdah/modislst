@@ -4,32 +4,25 @@
 \alias{lstProcessing}
 \title{Pre-processing function}
 \usage{
-lstProcessing(
-  targetLST,
-  referenceLST,
-  studyarea = "ATA",
-  crs = "+init=epsg:3031"
-)
+lstProcessing(LSTScene, studyarea = "ATA", crs = "+init=epsg:3031")
 }
 \arguments{
-\item{targetLST}{The input MODIS LST scene to be filled, downloaded from MODIS package.}
-
-\item{referenceLST}{The input MODIS LST scene to fill the gaps from it, downloaded from MODIS package.}
+\item{LSTScene}{MODIS LST scene to be cropped and projected.}
 
 \item{studyarea}{Name of study area ( 'GADM','countries'), the default study area is Antarctica "ATA".}
 
 \item{crs}{Target projected coordinate system, the default is Antarctica polar stereographic projected coordinate system "+init=epsg:3031".}
 }
 \value{
-List of cropped and projected MODIS LST scenes, the first element in the list is the target scene and the second one is the reference scene.
+Projected and Cropped MODIS LST scenes.
 }
 \description{
 Crop MODIS LST scenes based on the extent of the study area,after that reproject cropped MODIS LST scenes to the target projected coordinate system.
 }
 \examples{
-\dontrun{
+
 lstProcessing(aqua,terra)
-}
+
 
 
 }

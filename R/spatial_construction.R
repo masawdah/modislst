@@ -28,12 +28,12 @@
 #'
 #'
 #' @examples
-#'\dontrun{
+#'
 #' aqua <- raster(system.file("MODIS_data","aqua.tif", package="modislst"))
 #' dem <- raster(system.file("covariables","dem.tif", package="modislst"))
 #' aspect <- raster(system.file("covariables","aspect.tif", package="modislst"))
 #' fillingInSpace(aqua, covariable1=dem, covariable1=aspect)
-#'}
+#'
 #'
 #'
 #'

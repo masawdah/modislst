@@ -4,10 +4,12 @@
 \alias{fillingInTime}
 \title{Temporal reconstruction}
 \usage{
-fillingInTime(inputs, m = 47)
+fillingInTime(target, reference, m = 47)
 }
 \arguments{
-\item{inputs}{List of length two with following inputs: the first element is the target scene, the second element is the reference scene.}
+\item{target}{Target MODIS LST scene to be filled. Raster object in kelvin unit.}
+
+\item{reference}{Reference MODIS LST scene to fill from it. Raster object in kelvin unit.}
 
 \item{m}{The size of moving window. Default value is 47, using bigger size would fill more pixels but increase the computing work and reduce the accuracy of filled pixels.}
 }
@@ -18,10 +20,10 @@ MODIS LST scene filling partially.
 Fill the gaps in the target MODIS LST scene from the nearest MODIS LST scene (reference scene).
 }
 \examples{
-\dontrun{
+
 aqua <- raster(system.file("MODIS_data","aqua.tif", package="modislst"))
 terra <- raster(system.file("MODIS_data","terra.tif", package="modislst"))
 fillingLST(inputs=list(aqua,terra), m=47)
-}
+
 
 }

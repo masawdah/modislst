@@ -18,10 +18,12 @@ space using GAM with 3-dimensional spatial surface and additional
 covariables like digital elevation model and aspect, or combine the two
 method together to get better results.
 
-This work was the result of Master's thesis in fulfilment of the requirements for the Erasmus Mundus degree of Master of Science in Geospatial Technologies. At the Westfälische Wilhelms-Universität Münster, supervised by:
+This work developed in fulfilment of the requirements for the Erasmus Mundus degree of Master of Science in Geospatial Technologies. At the Westfälische Wilhelms-Universität Münster, supervised by:
+
 - Prof. Dr. Hanna Meyer
-- Prof. Dr. Ignacio Guerrero
 - Dr. Maite Lezama Valdes
+- Prof. Dr. Ignacio Guerrero
+
 
 ## Installation
 
@@ -55,7 +57,9 @@ Aqua/Terra scenes.
 ``` r
 library(modislst)
 library(raster)
+#> Warning: package 'raster' was built under R version 4.0.3
 #> Loading required package: sp
+#> Warning: package 'sp' was built under R version 4.0.3
 
 ## Add the target scene (aqua), and the reference scene (terra)
 aqua <- raster(system.file("MODIS_data","aqua.tif", package="modislst"))
@@ -82,7 +86,7 @@ plot(terra, main="Terra Scene - Reference Scene")
 
 ``` r
 ## Fill the gaps partially in time using moving window of size 47*47.
-filledAqua <- fillingInTime(inputs = list(aqua,terra), m=47)
+filledAqua <- fillingInTime(target= aqua,reference= terra, m=47)
 
 ## Plot the filled Aqua scene 
 plot(filledAqua, main="Filled Aqua Scene in time")

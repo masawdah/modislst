@@ -117,23 +117,14 @@
     <p>Crop MODIS LST scenes based on the extent of the study area,after that reproject cropped MODIS LST scenes to the target projected coordinate system.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lstProcessing</span><span class='op'>(</span>
-  <span class='va'>targetLST</span>,
-  <span class='va'>referenceLST</span>,
-  studyarea <span class='op'>=</span> <span class='st'>"ATA"</span>,
-  crs <span class='op'>=</span> <span class='st'>"+init=epsg:3031"</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>lstProcessing</span><span class='op'>(</span><span class='va'>LSTScene</span>, studyarea <span class='op'>=</span> <span class='st'>"ATA"</span>, crs <span class='op'>=</span> <span class='st'>"+init=epsg:3031"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>targetLST</th>
-      <td><p>The input MODIS LST scene to be filled, downloaded from MODIS package.</p></td>
-    </tr>
-    <tr>
-      <th>referenceLST</th>
-      <td><p>The input MODIS LST scene to fill the gaps from it, downloaded from MODIS package.</p></td>
+      <th>LSTScene</th>
+      <td><p>MODIS LST scene to be cropped and projected.</p></td>
     </tr>
     <tr>
       <th>studyarea</th>
@@ -147,12 +138,12 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>List of cropped and projected MODIS LST scenes, the first element in the list is the target scene and the second one is the reference scene.</p>
+    <p>Projected and Cropped MODIS LST scenes.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+    <pre class="examples"><div class='input'>
 <span class='fu'>lstProcessing</span><span class='op'>(</span><span class='va'>aqua</span>,<span class='va'>terra</span><span class='op'>)</span>
-<span class='op'>}</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in .getDataPath(path): path does not exist: inst/studyarea/</span></div><div class='input'>
 
 
 </div></pre>

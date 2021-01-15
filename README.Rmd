@@ -64,7 +64,7 @@ plot(terra, main="Terra Scene - Reference Scene")
 ### Fill the gaps in time
 ```{r reconstruct_in_time}
 ## Fill the gaps partially in time using moving window of size 47*47.
-filledAqua <- fillingInTime(inputs = list(aqua,terra), m=47)
+filledAqua <- fillingInTime(target= aqua,reference= terra, m=47)
 
 ## Plot the filled Aqua scene 
 plot(filledAqua, main="Filled Aqua Scene in time")
