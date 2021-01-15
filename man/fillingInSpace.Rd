@@ -36,12 +36,12 @@ Filled MODIS LST scene.
 Fill the gaps in the MODIS LST scene using GAM with 3D spatial trend surface, and two covariables used  to improve the results. The covariables have to be raster objects and matching the input MODIS LST scene.
 }
 \examples{
-
+\dontrun{
 aqua <- raster(system.file("MODIS_data","aqua.tif", package="modislst"))
 dem <- raster(system.file("covariables","dem.tif", package="modislst"))
 aspect <- raster(system.file("covariables","aspect.tif", package="modislst"))
 fillingInSpace(aqua, covariable1=dem, covariable1=aspect)
-
+}
 
 
 

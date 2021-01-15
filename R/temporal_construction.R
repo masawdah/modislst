@@ -15,11 +15,11 @@
 #' @importFrom stats quantile
 #'
 #' @examples
-#'
+#' \dontrun{
 #' aqua <- raster(system.file("MODIS_data","aqua.tif", package="modislst"))
 #' terra <- raster(system.file("MODIS_data","terra.tif", package="modislst"))
 #' fillingLST(inputs=list(aqua,terra), m=47)
-#'
+#'}
 #'
 fillingInTime <- function(target,reference,m=47){
 

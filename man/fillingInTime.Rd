@@ -20,10 +20,10 @@ MODIS LST scene filling partially.
 Fill the gaps in the target MODIS LST scene from the nearest MODIS LST scene (reference scene).
 }
 \examples{
-
+\dontrun{
 aqua <- raster(system.file("MODIS_data","aqua.tif", package="modislst"))
 terra <- raster(system.file("MODIS_data","terra.tif", package="modislst"))
 fillingLST(inputs=list(aqua,terra), m=47)
-
+}
 
 }

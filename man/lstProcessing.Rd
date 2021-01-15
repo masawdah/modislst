@@ -20,9 +20,9 @@ Projected and Cropped MODIS LST scenes.
 Crop MODIS LST scenes based on the extent of the study area,after that reproject cropped MODIS LST scenes to the target projected coordinate system.
 }
 \examples{
-
+\dontrun{
 lstProcessing(aqua,terra)
-
+}
 
 
 }

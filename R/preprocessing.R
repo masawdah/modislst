@@ -14,9 +14,9 @@
 #' @importFrom sp spTransform
 #'
 #' @examples
-#'
+#' \dontrun{
 #' lstProcessing(aqua,terra)
-#'
+#' }
 #'
 #'
 lstProcessing <- function(LSTScene, studyarea="ATA", crs="+init=epsg:3031"){
