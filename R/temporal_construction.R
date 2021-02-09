@@ -6,7 +6,7 @@
 #'
 #' @param target Target MODIS LST scene to be filled. Raster object in kelvin unit.
 #' @param reference Reference MODIS LST scene to fill from it. Raster object in kelvin unit.
-#' @param m The size of moving window. Default value is 47, using bigger size would fill more pixels but increase the computing work and reduce the accuracy of filled pixels.
+#' @param m The size of the moving window. The default value is 47. A bigger size fills more pixels but increase the computing work and reduce filled pixels' accuracy.
 #'
 #'
 #' @return MODIS LST scene filling partially.

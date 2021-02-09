@@ -2,18 +2,18 @@
 
 #' @title Spatial reconstruction
 #'
-#' @description Fill the gaps in the MODIS LST scene using GAM with 3D spatial trend surface, and two covariables used  to improve the results. The covariables have to be raster objects and matching the input MODIS LST scene.
+#' @description Fill the MODIS LST scene gaps using GAM with 3D spatial trend surface and two covariables to improve the results. The covariables have to be raster objects and matching the input MODIS LST scene.
 #'
 #'
-#' @param lstInput MODIS LST scene to be filled in space, using GAM with 3D spatial surface trend.
-#' @param studyarea Name of study area ( 'GADM','countries'), the default study area is Antarctica "ATA".
-#' @param covariable1 Digital elevation model as additional variable to improve the prediction of LST values. It should be a raster object and match the extent and origin of "lstInput" variable.
+#' @param lstInput MODIS LST scene to be filled in space.
+#' @param studyarea Name of the study area ( 'GADM','countries'). The default study area is Antarctica "ATA".
+#' @param covariable1 Digital elevation model as an additional variable to build the 3D spatial trend surface. It should be a raster object and match the extent and origin of the "lstInput" variable.
 #'
-#' @param covariable2 Any additional variable to improve the prediction of LST values. It should be a raster object and match the extent and origin of "lstInput" variable.
+#' @param covariable2 Any additional variable to improve the prediction of LST values. It should be a raster object and match the extent and origin of the "lstInput" variable.
 #'
 #' @param nc Cluster size (Default = 4).
-#' @param bs Represent the smooth function and quadratic penalty to control degree of freedom of smoothing (Default value is cubic spline basis "cr").
-#' @param k  Number of knots used for smoothing the function and decide the degree of freedom (Default = 20).
+#' @param bs Represent the smooth function and quadratic penalty to control the degree of freedom of smoothing (Default value is cubic spline basis "cr").
+#' @param k  The Number of knots used for smoothing the function and decide the degree of freedom (Default = 20).
 #'
 #'
 #' @return Filled MODIS LST scene.

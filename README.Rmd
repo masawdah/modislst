@@ -20,7 +20,13 @@ knitr::opts_chunk$set(
 [![Travis build status](https://travis-ci.com/masawdah/modislst.svg?branch=master)](https://travis-ci.com/masawdah/modislst)
 <!-- badges: end -->
 
-`modislst` is an R package for filling the gaps in MODIS LST data. Different functions have been implemented to reconstruct Aqua/Terra LST data using the nearest scene available in time, reconstruct the scene in space using GAM with 3-dimensional spatial surface and additional covariables like digital elevation model and aspect, or combine the two method together to get better results. 
+`modislst` is an R package for filling the gaps in MODIS LST data. Different functions have been implemented to reconstruct Aqua/Terra LST data. Using the nearest scene available in time, reconstruct the scene in space using GAM with 3-dimensional spatial surface and additional covariables like digital elevation model and aspect, or combine the two methods to get better results. 
+
+This work developed in fulfillment of the requirements for the Erasmus Mundus degree of Master of Science in Geospatial Technologies. At the Westfälische Wilhelms-Universität Münster, supervised by:
+
+- Prof. Dr. Hanna Meyer
+- Maite Lezama Valdes
+- Prof. Dr. Ignacio Guerrero
 
 ## Installation
 
@@ -31,15 +37,15 @@ remotes::install_github("masawdah/modislst")
 
 ## Example
 
-This is an example which shows you how to fill the gaps of daytime Aqua scene (target) on 31 October 2016 using the available Terra scene in the same day, then fill the remaining gaps completely in space.
+This example shows you how to fill the gaps of the daytime Aqua scene (target) on 31 October 2016 using the available Terra scene on the same day, then fill the remaining gaps in space.
 
 ### Setup
 
-Call `modislst` and prepare the necessary data. This example will show you how to fill Aqua LST scene for Antarctica. 
+Call `modislst` and prepare the necessary data. This example will show you how to fill the Aqua LST scene for Antarctica. 
 
-In this example Aqua/Terra LST overpasses on 31 October 2016 for Antarctica have been downloaded using MODIS package, then reprojected and cropped to use them immediately in the examples.
+In this example, Aqua/Terra LST overpasses on 31 October 2016 for Antarctica have been downloaded using MODIS package, then reprojected and cropped to use them immediately in the examples.
 
-Aspect and Digital Elevation Model of Antarctica obtained from National Snow & Ice Center (https://nsidc.org/data/nsidc-0082/versions/2)], used as covariables after matching their extent and origin with Aqua/Terra scenes. 
+Aspect and Digital Elevation Model of Antarctica obtained from National Snow & Ice Center (https://nsidc.org/data/nsidc-0082/versions/2)] were used as covariables after matching their extent and origin with the Aqua/Terra scenes. 
 
 ```{r example}
 library(modislst)
@@ -63,7 +69,7 @@ plot(terra, main="Terra Scene - Reference Scene")
 
 ### Fill the gaps in time
 ```{r reconstruct_in_time}
-## Fill the gaps partially in time using moving window of size 47*47.
+## Fill the gaps partially in time using a moving window of size 47*47.
 filledAqua <- fillingInTime(target= aqua,reference= terra, m=47)
 
 ## Plot the filled Aqua scene 
@@ -75,7 +81,7 @@ plot(filledAqua, main="Filled Aqua Scene in time")
 ### Fill the gaps in space
 ```{r reconstruct_in_space}
 
-## Fill the remaining gaps partially in space using.
+## Fill the remaining gaps in space.
 filledAqua <- fillingInSpace(lstInput=filledAqua, covariable1=dem, covariable2=aspect)
 
 ## Plot the filled Aqua scene 

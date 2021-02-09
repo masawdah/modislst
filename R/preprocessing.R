@@ -2,11 +2,11 @@
 #' @title Pre-processing function
 #'
 #'
-#' @description        Crop MODIS LST scenes based on the extent of the study area,after that reproject cropped MODIS LST scenes to the target projected coordinate system.
+#' @description         Crop MODIS LST scenes based on the extent of the study area. Then, reproject cropped MODIS LST scenes to the target projected coordinate system.
 #'
 #' @param LSTScene     MODIS LST scene to be cropped and projected.
-#' @param studyarea    Name of study area ( 'GADM','countries'), the default study area is Antarctica "ATA".
-#' @param crs          Target projected coordinate system, the default is Antarctica polar stereographic projected coordinate system "+init=epsg:3031".
+#' @param studyarea    Name of the study area ( 'GADM', 'countries'). The default study area is Antarctica "ATA".
+#' @param crs          Target projected coordinate system. The default is Antarctica polar stereographic projected coordinate system "+init=epsg:3031".
 #'
 #' @return  Projected and Cropped MODIS LST scenes.
 #' @export
